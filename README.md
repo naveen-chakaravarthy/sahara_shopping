@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+About:
+* Online Shopping India - Buy mobiles, laptops, cameras, books, watches, apparel, shoes and e-Gift Cards. Free Shipping & Cash on Delivery ...
 
-Things you may want to cover:
+List of steps to make this app up and running
 
-* Ruby version
+* Rails 6.1.7
 
-* System dependencies
+* Ruby 2.6.9
 
-* Configuration
+* Database creation through rails db:migrate
 
-* Database creation
+* Database initialization in database.yml
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* rails server
