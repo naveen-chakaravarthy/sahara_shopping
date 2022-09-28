@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :is_logged_in
   def new
     render "new"
   end

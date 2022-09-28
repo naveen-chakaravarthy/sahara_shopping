@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CafeteriaManagement</title>
+    <title>Sahara -  Indian Online Shopping</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,22 +11,79 @@
   </head>
 
   <body>
-    <div class="row mx-2 text-center mt-4">
-      <div class="row text-center ">
-        <div class="col-12">
-          <div class="text-success">
-            <% if flash[:info] %>
-              <%= flash[:info] %>
-            <%  end %>
-          </div>
-          <div class="text-danger">
-            <% if flash[:error] %>
-              <%= flash[:error] %>
-            <%  end %>
-          </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+          <img
+            src="https://banner2.cleanpng.com/20180330/rve/kisspng-electricity-computer-icons-symbol-company-electric-electric-5abdc00c68c5a8.0630823215223849084292.jpg"
+            height="55"
+            alt="MDB Logo"
+            loading="lazy"
+            />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Home","/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/shop">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Orders</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+
+      <!-- Right elements -->
+      <div class="d-flex align-items-center">
+        <!-- Avatar -->
+        <% if @user %>
+          <%= @user.first_name.titleize %>
+          <%= link_to "Logout", destroy_session_path, method: 'delete' %>
+        <% end %>
+
+      </div>
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <div class="row mx-2 text-center mt-4">
+    <div class="row text-center ">
+      <div class="col-12">
+        <div class="text-success">
+          <% if flash[:info] %>
+            <%= flash[:info] %>
+          <% end %>
+        </div>
+        <div class="text-danger">
+          <% if flash[:error] %>
+            <%= flash[:error] %>
+          <% end %>
         </div>
       </div>
-      <%= yield %>
     </div>
+    <%= yield %>
+  </div>
   </body>
 </html>
