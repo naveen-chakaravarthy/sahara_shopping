@@ -11,6 +11,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="row mx-2 text-center mt-4">
+      <div class="row text-center ">
+        <div class="col-12">
+          <div class="text-success">
+            <% if flash[:info] %>
+              <%= flash[:info] %>
+            <%  end %>
+          </div>
+          <div class="text-danger">
+            <% if flash[:error] %>
+              <%= flash[:error] %>
+            <%  end %>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: rails_test
+  database: cf_management
   host: mysql
   reconnect: true
   username: root

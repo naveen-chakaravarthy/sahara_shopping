@@ -1,0 +1,25 @@
+<div class="col-4"></div>
+<div class="col-4">
+  <h2>Please enter details to complete Signup</h2>
+  <%= form_with url: users_path, methods: :post, class: 'form-control' do |form| %>
+    <div>
+      <%= form.label :first_name, "Enter user first name", class: 'form-label' %>
+      <%= form.text_field :first_name, class: 'form-input' %>
+    </div>
+    <div>
+      <%= form.label :last_name, "Enter user last name", class: 'form-label' %>
+      <%= form.text_field :last_name, class: 'form-input' %>
+    </div>
+    <div>
+      <%= form.label :email, "Enter user email", class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-input' %>
+    </div>
+    <div>
+      <%= form.label :password, "Enter password", class: 'form-label' %>
+      <%= form.password_field :password, class: 'form-input' %>
+    </div>
+
+    <%= form.submit "Submit", class: 'form-input' %>
+  <% end %>
+</div>
+
