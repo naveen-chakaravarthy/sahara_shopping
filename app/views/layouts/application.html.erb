@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sahara -  Indian Online Shopping</title>
+    <title>Sahara - Online Shopping India</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -59,8 +59,13 @@
       <div class="d-flex align-items-center">
         <!-- Avatar -->
         <% if @user %>
-          <%= @user.first_name.titleize %>
-          <%= link_to "Logout", destroy_session_path, method: 'delete' %>
+          <div class="user_bar" style="float: left">
+            <%= @user.first_name.titleize %> &nbsp;&nbsp;
+          </div>
+          <div class="logout_bar">
+            <a alt="Logout" href="/signout"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+          </div>
+<!--          <%#= link_to "Logout", destroy_session_path, method: 'delete' %> &nbsp;-->
         <% end %>
 
       </div>
@@ -71,12 +76,12 @@
   <div class="row mx-2 text-center mt-4">
     <div class="row text-center ">
       <div class="col-12">
-        <div class="text-success">
+        <div class="text-success float-right">
           <% if flash[:info] %>
             <%= flash[:info] %>
           <% end %>
         </div>
-        <div class="text-danger">
+        <div class="text-danger float-right">
           <% if flash[:error] %>
             <%= flash[:error] %>
           <% end %>

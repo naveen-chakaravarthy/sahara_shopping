@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "mysql2", "~> 0.5.4"
 
 gem "bootstrap", "~> 5.2"
+gem "font-awesome-sass", "~> 6.2.0"

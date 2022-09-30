@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_082819) do
+ActiveRecord::Schema.define(version: 2022_09_30_063303) do
 
   create_table "cart_items", charset: "utf8", force: :cascade do |t|
     t.integer "cart_id"
+    t.integer "user_id"
     t.integer "menu_item_id"
     t.string "menu_item_name"
     t.integer "menu_item_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "count", default: 0
   end
 
   create_table "carts", charset: "utf8", force: :cascade do |t|

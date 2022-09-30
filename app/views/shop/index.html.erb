@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-7 ">
+    <% MenuItem.all.each do |item| %>
+      <div class="card mb-3 mx-1" style="width: 15rem; float: left">
+        <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= item.name %></h5>
+          <%= item.price %> <br>
+          Category: <%= item.menu_category.name %>
+          <p class="card-text"><%= item.description %></p>
+          <%= form_with url: shop_add_to_cart_path(item.id), methods: :post, class: '' do |form| %>
+            <%= form.submit "Add to cart", class: 'form-input btn btn-info' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-5">
+    <div class="d-flex" style="height: 100%; float: left">
+      <div class="vr"></div>
+    </div>
+    <div class="mx-2  align-items-left" style="float: left">
+      <div style="float: left"> Cart Items </div>
+      <br>
+      <% CartItem.current_user_cart_items(@user.id).each do |item| %>
+        <div style="float:left;" class="">
+          <div style="float:left;" class="">
+            <%= form_with url: remove_from_cart_path(item.id), methods: :post, class: 'float-left' do |form| %>
+              <%= form.submit "-", class: ' btn btn-danger btn-sm' %>
+              <%= item.count %>&nbsp;
+          <% end %>
+          </div>
+          <div style="float:left;" class="">
+            <%= form_with url: shop_add_to_cart_path(item.menu_item_id), methods: :post, class: 'float-left' do |form| %>
+              <%= form.submit "+", class: ' btn btn-success btn-sm' %>
+            <% end %>
+          </div>
+        </div>
+        <div style="float:left;" class="ml-2 pt-2 cart_items_div">
+          <%= item.menu_item_name %>
+        </div>
+        <div style="float:left;" class=" pt-2 cart_items_div">
+          Price <%= item.menu_item_price %> * <%= item.count %> =>
+        </div>
+
+        <div style="float:left;" class=" pt-2 cart_items_div">
+          <%= item.menu_item_price * item.count %>
+        </div>
+        <br>
+        <br>
+      <% end %>
+      <br>
+      <h3 style="color: green">Total Price: <%= CartItem.get_current_user_cart_total(@user.id) %></h3>
+      <%= form_with url: "/signout", method: :post do |form| %>
+        <%= form.submit "Proceed to Checkout", class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

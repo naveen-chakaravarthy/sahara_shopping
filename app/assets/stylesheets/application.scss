@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "font-awesome";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,3 +16,26 @@
  *= require_self
  */
 
+.user_bar {
+  background-color: #d5ccf3;
+  padding: 5px;
+  font-size: smaller;
+  border-radius: 15px 0px 15px 15px;
+  position: absolute;
+  right: 70px;
+  min-width: 150px;
+}
+
+.logout_bar {
+  font-size: medium;
+  position: absolute;
+  right: 40px;
+  color: white !important;
+}
+
+.cart_items_div {
+  background-color: #d5ccf3;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 25px;
+}

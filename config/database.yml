@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: cf_management
+  database: sahara_shopping
   host: mysql
   reconnect: true
   username: root
