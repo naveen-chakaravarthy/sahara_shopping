@@ -14,3 +14,4 @@ List of steps to make this app up and running
 * Database initialization in database.yml
 
 * rails server
+* 
