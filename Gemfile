@@ -58,3 +58,6 @@ gem "mysql2", "~> 0.5.4"
 
 gem "bootstrap", "~> 5.2"
 gem "font-awesome-sass", "~> 6.2.0"
+gem "jquery-rails", "~> 4.5"
+
+gem "bootstrap-sass", "~> 3.4"

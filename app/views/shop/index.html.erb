@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-7 ">
     <% MenuItem.all.each do |item| %>
-      <div class="card mb-3 mx-1" style="width: 15rem; float: left">
+      <div class="card mb-3 mx-1" style="width: 16rem; float: left">
         <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><%= item.name %></h5>
@@ -20,7 +20,8 @@
       <div class="vr"></div>
     </div>
     <div class="mx-2  align-items-left" style="float: left">
-      <div style="float: left"> Cart Items </div>
+      <h3 style="float: left"> Cart Items </h3>
+      <br>
       <br>
       <% CartItem.current_user_cart_items(@user.id).each do |item| %>
         <div style="float:left;" class="">
@@ -51,7 +52,7 @@
       <% end %>
       <br>
       <h3 style="color: green">Total Price: <%= CartItem.get_current_user_cart_total(@user.id) %></h3>
-      <%= form_with url: "/signout", method: :post do |form| %>
+      <%= form_with url: proceed_checkout_path, method: :post do |form| %>
         <%= form.submit "Proceed to Checkout", class: 'btn btn-success' %>
       <% end %>
     </div>

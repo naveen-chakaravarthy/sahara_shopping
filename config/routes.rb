@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   get "/shop" => "shop#index", as: :shop_index
   post "/add_to_cart/:item_id" => "shop#add_to_cart", as: :shop_add_to_cart
   post "/remove_from_cart/:item_id" => "shop#remove_from_cart", as: :remove_from_cart
+
+  # orders
+  get "/my_orders" => "orders#my_orders", as: :my_orders
+  get "/my_orders/:order_id" => "orders#my_order_details", as: :my_order_details
+  post "/proceed_checkout" => "orders#proceed_checkout", as: :proceed_checkout
 end

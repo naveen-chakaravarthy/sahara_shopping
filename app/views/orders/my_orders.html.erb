@@ -1,0 +1,27 @@
+<div class="container">
+  <table id="example" class="table table-striped table-bordered" style="width: 1000px;">
+    <thead>
+    <th>OrderId</th>
+    <th>Date</th>
+    <th>User</th>
+    <th>Action</th>
+    </thead>
+    <tbody>
+    <% OrderItem.my_orders(@user.id).each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.date %></td>
+        <td><%= @user.first_name %></td>
+        <td> <%= link_to "Order Details","/my_orders/#{order.id}", class: "" %> </td>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
