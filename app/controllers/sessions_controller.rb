@@ -1,20 +1,30 @@
 class SessionsController < ApplicationController
   skip_before_action :is_logged_in
-  def new
+
+  def index
     if session[:current_user_id]
-      redirect_to "/shop"
+      if @user and @user.user_type == "customer"
+        redirect_to "/shop"
+      else
+        redirect_to "/admin/orders"
+      end
     else
-      render "new"
+      render "index"
     end
 
   end
 
-  def index
+  def new
     if session[:current_user_id]
-      redirect_to "/shop"
+      if @user and @user.user_type == "customer"
+        redirect_to "/shop"
+      else
+        redirect_to "/admin/orders"
+      end
     else
-      render "index"
+      render "new"
     end
+
   end
 
   def create
@@ -31,7 +41,11 @@ class SessionsController < ApplicationController
     if is_valid
       flash[:info] = "Login Successful"
       session[:current_user_id] = user.id
-      redirect_to "/shop"
+      if @user and @user.user_type == "customer"
+        redirect_to "/shop"
+      else
+        redirect_to "/admin/orders"
+      end
     else
       flash[:error] = "Login Failed"
       redirect_to "/sessions/new"

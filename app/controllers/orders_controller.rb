@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   def my_orders
     render "my_orders"
+    end
+
+  def admin_orders
+    render "admin_orders"
   end
 
   def proceed_checkout
@@ -20,5 +24,14 @@ class OrdersController < ApplicationController
   def my_order_details
     order_id = params[:order_id]
     render "my_order_details", locals: {order_id: order_id}
+  end
+
+  def set_status
+    order_id = params[:order_id]
+    status = params[:status]
+    Order.find_by(id: order_id).update(status: status)
+    OrderItem.where(order_id: order_id).update_all(status: status)
+    flash[:info] = "Orders marked as #{status}"
+    redirect_to admin_orders_path
   end
 end

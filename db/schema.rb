@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_090151) do
+ActiveRecord::Schema.define(version: 2022_10_02_015430) do
 
   create_table "cart_items", charset: "utf8", force: :cascade do |t|
     t.integer "cart_id"
@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(version: 2022_09_30_090151) do
     t.integer "menu_item_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "count"
+    t.integer "count", default: 0, null: false
+    t.column "status", "enum('delivered','cancelled','pending')", default: "pending"
   end
 
   create_table "orders", charset: "utf8", force: :cascade do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_09_30_090151) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.column "status", "enum('delivered','cancelled','pending')", default: "pending"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

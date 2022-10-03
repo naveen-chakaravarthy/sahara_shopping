@@ -41,6 +41,7 @@
         </a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if @user and @user.user_type == 'customer' %>
           <li class="nav-item">
             <%= link_to "Home","/", class: "nav-link" %>
           </li>
@@ -50,6 +51,20 @@
           <li class="nav-item">
             <a class="nav-link" href="/my_orders">My Orders</a>
           </li>
+          <% elsif @user and @user.user_type == 'owner' %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/orders">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/my_orders">Add Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/my_orders">Add Items</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/my_orders">Admin</a>
+            </li>
+          <% end %>
         </ul>
         <!-- Left links -->
       </div>

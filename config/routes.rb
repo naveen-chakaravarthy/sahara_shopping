@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get "/my_orders" => "orders#my_orders", as: :my_orders
   get "/my_orders/:order_id" => "orders#my_order_details", as: :my_order_details
   post "/proceed_checkout" => "orders#proceed_checkout", as: :proceed_checkout
+
+  # Admin actions
+  get "/admin/orders" => "orders#admin_orders", as: :admin_orders
+  get "/admin/set_status/:order_id/:status" => "orders#set_status", as: :set_status
 end

@@ -8,13 +8,21 @@
     <th>Action</th>
     </thead>
     <tbody>
-    <% OrderItem.my_orders(@user.id).each do |order| %>
+    <% Order.all.each do |order| %>
       <tr>
         <td><%= order.id %></td>
         <td><%= order.date %></td>
-        <td><%= @user.first_name %></td>
+        <td><%= order.user.first_name %></td>
         <td><%= order.status %></td>
-        <td> <%= link_to "Order Details","/my_orders/#{order.id}", class: "" %> </td>
+        <td>
+          <%= link_to "","/my_orders/#{order.id}", class: "fa fa-eye" %>&nbsp;
+          <% if order.status == 'delivered' %>
+            <%= link_to "Mark as pending", set_status_path(order.id, "pending"), class: "" %>&nbsp;
+          <% else %>
+            <%= link_to "Mark as delivered", set_status_path(order.id, "delivered"), class: "" %>&nbsp;
+          <% end %>
+          <%= link_to "","#", class: "fa fa-trash" %>
+        </td>
       </tr>
     <% end %>
 
