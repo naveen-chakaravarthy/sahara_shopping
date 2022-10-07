@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
 
   def index
     if session[:current_user_id]
-      if @user and @user.user_type == "customer"
+      if @user and @user.user_type == :customer
         redirect_to "/shop"
       else
-        redirect_to "/admin/orders"
+        redirect_to "/shop"
       end
     else
       render "index"
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       if @user and @user.user_type == "customer"
         redirect_to "/shop"
       else
-        redirect_to "/admin/orders"
+        redirect_to "/shop"
       end
     else
       render "new"
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
       if @user and @user.user_type == "customer"
         redirect_to "/shop"
       else
-        redirect_to "/admin/orders"
+        redirect_to "/shop"
       end
     else
       flash[:error] = "Login Failed"

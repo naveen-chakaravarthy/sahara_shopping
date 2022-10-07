@@ -10,8 +10,8 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  config.hosts = ["58c0-13-234-188-229.in.ngrok.io",
-                  "127.0.0.1:3000", "127.0.0.1"]
+  config.hosts = ["8345-165-1-160-106.in.ngrok.io",
+                  "127.0.0.1:3000", "127.0.0.1", "localhost"]
 
   # Show full error reports.
   config.consider_all_requests_local = true

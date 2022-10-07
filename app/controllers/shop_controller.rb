@@ -1,6 +1,14 @@
 class ShopController < ApplicationController
   def index
-    render "index"
+    if @user.user_type == "owner"
+      redirect_to admin_orders_path
+    else
+      render "index"
+    end
+  end
+
+  def admin_shop
+      render "index"
   end
 
   def add_to_cart
