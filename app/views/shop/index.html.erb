@@ -2,7 +2,12 @@
   <div class="col-7 text-center">
     <% MenuItem.all.each do |item| %>
       <div class="card mb-3 mx-1" style="width: 16rem; float: left">
-        <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
+        <% if MenuItem.has_attachment(item) %>
+
+          <%= image_tag rails_storage_proxy_path(item.image_path), class: "card-img-top" %>
+        <% else %>
+          <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= item.name %></h5>
           <%= item.price %> <br>

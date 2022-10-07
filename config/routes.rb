@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get "/admin/create_category" => "admin#create_category", as: :create_category_get
   post "/admin/create_item" => "admin#create_item", as: :create_item
   get "/admin/create_item" => "admin#create_item", as: :create_item_get
+  delete "/admin/delete_item/:item" => "admin#delete_item", as: :delete_item
+  delete "/admin/delete_category/:category" => "admin#delete_category", as: :delete_category
 end

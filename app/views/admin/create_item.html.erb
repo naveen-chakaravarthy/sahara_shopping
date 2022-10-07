@@ -2,7 +2,7 @@
   <%= form_with url: create_item_path, methods: :post, class: 'form-control' do |form| %>
     <div>
       <%= form.label :menu_category_id, "Please select menu category", class: 'form-label' %>
-      <%= form.text_field :menu_category_id, class: 'form-input' %>
+      <%= form.select :menu_category_id, MenuCategory.get_all_categories, class: 'form-select' %>
     </div>
     <div>
       <%= form.label :name, "Enter menu item name", class: 'form-label' %>
@@ -14,7 +14,11 @@
     </div>
     <div>
       <%= form.label :name, "Enter menu item price", class: 'form-label' %>
-      <%= form.number_field :name, class: 'form-input' %>
+      <%= form.number_field :price, class: 'form-input' %>
+    </div>
+    <div>
+      <%= form.label :name, "Upload menu item image", class: 'form-label' %>
+      <%= form.file_field :image_path, class: 'form-input' %>
     </div>
 
     <%= form.submit "Submit", class: 'form-input' %>

@@ -30,10 +30,26 @@ class AdminController < ApplicationController
         description: params[:description],
         price: params[:price],
         )
-
+      item.image_path.attach(params[:image_path])
       flash[:info] = "Menu Item Created Successful - #{item.name}."
       redirect_to list_items_path
     end
+  end
+
+  def delete_item
+    item_id = params[:item]
+    item = MenuItem.find_by(id: item_id)
+    item.destroy
+    flash[:error] = "Menu Item deleted - #{item.name}."
+    redirect_to list_items_path
+  end
+
+  def delete_category
+    category_id = params[:category]
+    category = MenuCategory.find_by(id: category_id)
+    category.destroy
+    flash[:error] = "Menu Category deleted - #{category.name}."
+    redirect_to list_categories_path
   end
 
 end

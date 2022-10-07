@@ -18,7 +18,7 @@
           <td><%= item.menu_category.name %></td>
           <td><%= item.created_at %></td>
           <td>
-            <%= link_to "","#", class: "fa fa-trash" %>
+            <%= link_to "", delete_item_path(item: item), class: "fa fa-trash", method: :delete %>
           </td>
         </tr>
       <% end %>

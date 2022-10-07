@@ -12,7 +12,7 @@
             <td><%= category.name %></td>
             <td><%= category.created_at %></td>
             <td>
-                <%= link_to "","#", class: "fa fa-trash" %>
+              <%= link_to "", delete_category_path(category: category), class: "fa fa-trash", method: :delete %>
             </td>
         </tr>
         <% end %>
