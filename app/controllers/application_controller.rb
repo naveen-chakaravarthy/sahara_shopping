@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
+  def is_logged_in_callback
+    if session[:current_user_id]
+      true
+    end
+  end
 end

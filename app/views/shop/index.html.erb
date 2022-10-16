@@ -13,7 +13,7 @@
           <%= item.price %> <br>
           Category: <%= item.menu_category.name %>
           <p class="card-text"><%= item.description %></p>
-          <%= form_with url: shop_add_to_cart_path(item.id), methods: :post, class: '' do |form| %>
+            <%= form_with url: cart_item_index_path(item_id: item.id), methods: :post, class: '' do |form| %>
             <%= form.submit "Add to cart", class: 'form-input btn btn-info' %>
           <% end %>
         </div>
@@ -31,13 +31,13 @@
       <% CartItem.current_user_cart_items(@user.id).each do |item| %>
         <div style="float:left;" class="">
           <div style="float:left;" class="">
-            <%= form_with url: remove_from_cart_path(item.id), methods: :post, class: 'float-left' do |form| %>
+            <%= form_with url: cart_item_path(item.id), method: :delete, class: 'float-left' do |form| %>
               <%= form.submit "-", class: ' btn btn-danger btn-sm' %>
               <%= item.count %>&nbsp;
           <% end %>
           </div>
           <div style="float:left;" class="">
-            <%= form_with url: shop_add_to_cart_path(item.menu_item_id), methods: :post, class: 'float-left' do |form| %>
+            <%= form_with url: cart_item_index_path(item_id: item.menu_item_id), method: :post, class: 'float-left' do |form| %>
               <%= form.submit "+", class: ' btn btn-success btn-sm' %>
             <% end %>
           </div>
@@ -57,7 +57,7 @@
       <% end %>
       <br>
       <h3 style="color: green">Total Price: <%= CartItem.get_current_user_cart_total(@user.id) %></h3>
-      <%= form_with url: proceed_checkout_path, method: :post do |form| %>
+      <%= form_with url: proceed_checkout_cart_item_index_path, method: :post do |form| %>
         <%= form.submit "Proceed to Checkout", class: 'btn btn-success' %>
       <% end %>
     </div>

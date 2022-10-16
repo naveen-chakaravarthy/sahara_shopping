@@ -1,30 +1,13 @@
 class SessionsController < ApplicationController
   skip_before_action :is_logged_in
+  # before_action :new, if: :is_logged_in_callback
 
   def index
-    if session[:current_user_id]
-      if @user and @user.user_type == :customer
-        redirect_to "/shop"
-      else
-        redirect_to "/shop"
-      end
-    else
-      render "index"
-    end
 
   end
 
   def new
-    if session[:current_user_id]
-      if @user and @user.user_type == "customer"
-        redirect_to "/shop"
-      else
-        redirect_to "/shop"
-      end
-    else
-      render "new"
-    end
-
+    render "new"
   end
 
   def create

@@ -15,11 +15,11 @@
         <td><%= order.user.first_name %></td>
         <td><%= order.status %></td>
         <td>
-          <%= link_to "","/my_orders/#{order.id}", class: "fa fa-eye" %>&nbsp;
+          <%= link_to "",order_order_item_index_path(order_id: order.id), class: "fa fa-eye" %>&nbsp;
           <% if order.status == 'delivered' %>
-            <%= link_to "Mark as pending", set_status_path(order.id, "pending"), class: "" %>&nbsp;
+            <%= link_to "Mark as pending", set_status_order_path(id: order.id, status: "pending"), class: "" %>&nbsp;
           <% else %>
-            <%= link_to "Mark as delivered", set_status_path(order.id, "delivered"), class: "" %>&nbsp;
+            <%= link_to "Mark as delivered", set_status_order_path(id: order.id, status: "delivered"), class: "" %>&nbsp;
           <% end %>
           <%= link_to "","#", class: "fa fa-trash" %>
         </td>

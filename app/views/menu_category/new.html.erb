@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with url: create_category_path, methods: :post, class: 'form-control' do |form| %>
+  <%= form_with url: menu_category_index_path, methods: :post, class: 'form-control' do |form| %>
     <div>
       <%= form.label :name, "Enter menu category name", class: 'form-label' %>
       <%= form.text_field :name, class: 'form-input' %>
