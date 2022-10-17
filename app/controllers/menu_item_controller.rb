@@ -1,13 +1,14 @@
 class MenuItemController < ApplicationController
 
   def index
+    menu_items = MenuItem.all.map
   end
 
   def new
   end
 
   def list_items
-    render "list_items"
+    render "list_items", locals: {menu_items: MenuItem.all.map}
   end
 
   def create

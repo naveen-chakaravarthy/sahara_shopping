@@ -1,6 +1,7 @@
 class MenuCategoryController < ApplicationController
 
   def index
+    render 'index' , locals: { menu_category: MenuCategory.all }
   end
 
   def new
