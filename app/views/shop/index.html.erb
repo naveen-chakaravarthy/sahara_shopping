@@ -1,25 +1,25 @@
 <div class="row">
   <div class="col-7 text-center">
-    <% MenuItem.all.each do |item| %>
-      <div class="card mb-3 mx-1" style="width: 16rem; float: left">
-        <% if MenuItem.has_attachment(item) %>
+  <% MenuItem.all.each do |item| %>
+    <div class="card mb-3 mx-1" style="width: 16rem; float: left">
+      <% if MenuItem.has_attachment(item) %>
 
-          <%= image_tag rails_storage_proxy_path(item.image_path), class: "card-img-top" %>
-        <% else %>
-          <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
+        <%= image_tag rails_storage_proxy_path(item.image_path), class: "card-img-top" %>
+      <% else %>
+        <img class="card-img-top" src="https://www.renprojects.in/wp-content/uploads/2016/05/placeholder.gif" alt="Card image cap">
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <%= item.price %> <br>
+        Category: <%= item.menu_category.name %>
+        <p class="card-text"><%= item.description %></p>
+        <%= form_with url: cart_item_index_path(item_id: item.id), methods: :post, class: '' do |form| %>
+          <%= form.submit "Add to cart", class: 'form-input btn btn-info' %>
         <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= item.name %></h5>
-          <%= item.price %> <br>
-          Category: <%= item.menu_category.name %>
-          <p class="card-text"><%= item.description %></p>
-            <%= form_with url: cart_item_index_path(item_id: item.id), methods: :post, class: '' do |form| %>
-            <%= form.submit "Add to cart", class: 'form-input btn btn-info' %>
-          <% end %>
-        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
   <div class="col-5">
     <div class="d-flex" style="height: 100%; float: left">
       <div class="vr"></div>
@@ -28,7 +28,7 @@
       <h3 style="float: left"> Cart Items </h3>
       <br>
       <br>
-      <% CartItem.current_user_cart_items(@user.id).each do |item| %>
+      <% current_user_cart_item.each do |item| %>
         <div style="float:left;" class="">
           <div style="float:left;" class="">
             <%= form_with url: cart_item_path(item.id), method: :delete, class: 'float-left' do |form| %>
@@ -56,7 +56,7 @@
         <br>
       <% end %>
       <br>
-      <h3 style="color: green">Total Price: <%= CartItem.get_current_user_cart_total(@user.id) %></h3>
+      <h3 style="color: green">Total Price: <%= current_user_cart_total %></h3>
       <%= form_with url: proceed_checkout_cart_item_index_path, method: :post do |form| %>
         <%= form.submit "Proceed to Checkout", class: 'btn btn-success' %>
       <% end %>

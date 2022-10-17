@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :menu_category do
     resources :menu_item
     collection do
-      get "list_item" => "menu_item#list_items"
+      get "list_items" => "menu_item#list_items"
     end
   end
 

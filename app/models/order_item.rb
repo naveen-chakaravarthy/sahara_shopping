@@ -2,11 +2,6 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :menu_item
 
-  def self.my_orders(current_user_id)
-    user = User.find_by(id: current_user_id)
-    user.order.all
-  end
-
   def self.pending_orders
     user = OrderItem.find_by(status: "pending")
     user.order.all

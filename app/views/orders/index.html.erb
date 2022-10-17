@@ -8,7 +8,7 @@
     <th>Action</th>
     </thead>
     <tbody>
-    <% OrderItem.my_orders(@user.id).each do |order| %>
+    <% orders.each do |order| %>
       <tr>
         <td><%= order.id %></td>
         <td><%= order.date %></td>

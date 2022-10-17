@@ -18,14 +18,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(
+    user = User.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
+      address: params[:address],
       email: params[:email],
       password: params[:password],
     )
 
-    flash[:info] = "Customer Signup Successful - #{user.id}. #{user.email}"
+    if user.valid?
+      flash[:info] = "Customer Signup Successful - #{user.id}. #{user.email}"
+    else
+      flash[:error] = "Customer Signup Failed - #{user.errors.full_messages}"
+      return render new_user_path, locals: {params: params}
+    end
     redirect_to users_path
   end
 end
