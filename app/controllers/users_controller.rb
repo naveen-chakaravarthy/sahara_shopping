@@ -23,11 +23,12 @@ class UsersController < ApplicationController
       last_name: params[:last_name],
       address: params[:address],
       email: params[:email],
+      username: params[:username],
       password: params[:password],
     )
 
     if user.valid?
-      flash[:info] = "Customer Signup Successful - #{user.id}. #{user.email}"
+      flash[:info] = "Customer Signup Successful - #{user.email}"
     else
       flash[:error] = "Customer Signup Failed - #{user.errors.full_messages}"
       return render new_user_path, locals: {params: params}

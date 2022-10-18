@@ -16,6 +16,17 @@ class MenuCategoryController < ApplicationController
     redirect_to menu_category_index_path
   end
 
+  def edit
+    render 'edit', locals: {category: MenuCategory.find_by(id: params[:id])}
+  end
+
+  def update
+    category = MenuCategory.find_by(id: params[:id]).update(name: params[:name])
+
+    flash[:info] = "Category Updated Successful - #{category}."
+    redirect_to menu_category_index_path
+  end
+
   def destroy
     category_id = params[:id]
     category = MenuCategory.find_by(id: category_id)

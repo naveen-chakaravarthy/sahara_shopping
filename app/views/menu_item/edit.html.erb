@@ -1,0 +1,26 @@
+<div class="container">
+  <%= form_with url: menu_category_menu_item_path, method: :put, class: 'form-control' do |form| %>
+    <div>
+      <%= form.label :menu_category_id, "Please select menu category", class: 'form-label' %>
+      <%= form.select :menu_category_id, MenuCategory.get_all_categories, class: 'form-select', value: item[:menu_category_id] %>
+    </div>
+    <div>
+      <%= form.label :name, "Enter menu item name", class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-input', value: item[:name] %>
+    </div>
+    <div>
+      <%= form.label :description, "Enter menu item description", class: 'form-label' %>
+      <%= form.text_area :description, class: 'form-input', value: item[:description] %>
+    </div>
+    <div>
+      <%= form.label :price, "Enter menu item price", class: 'form-label' %>
+      <%= form.number_field :price, class: 'form-input', value: item[:price] %>
+    </div>
+    <div>
+      <%= form.label :image_path, "Upload menu item image", class: 'form-label' %>
+      <%= form.file_field :image_path, class: 'form-input', value: item[:image_path] %>
+    </div>
+
+    <%= form.submit "Submit", class: 'form-input' %>
+  <% end %>
+</div>
