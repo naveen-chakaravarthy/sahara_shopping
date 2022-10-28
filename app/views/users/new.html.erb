@@ -1,22 +1,30 @@
 <div class="col-4"></div>
 <div class="col-4">
-  <h2>Please enter details to complete Signup</h2>
+  <h2>Please enter details to complete Signup </h2>
   <%= form_with url: users_path, methods: :post, class: 'form-control' do |form| %>
     <div>
       <%= form.label :first_name, "Enter user first name", class: 'form-label' %>
-      <%= form.text_field :first_name, class: 'form-input' %>
+      <%= form.text_field :first_name, class: 'form-input', value: params[:first_name] %>
     </div>
     <div>
       <%= form.label :last_name, "Enter user last name", class: 'form-label' %>
-      <%= form.text_field :last_name, class: 'form-input' %>
+      <%= form.text_field :last_name, class: 'form-input', value: params[:last_name] %>
+    </div>
+    <div>
+      <%= form.label :address, "Enter user address", class: 'form-label' %>
+      <%= form.text_area :address, class: 'form-input', value: params[:address] %>
     </div>
     <div>
       <%= form.label :email, "Enter user email", class: 'form-label' %>
-      <%= form.email_field :email, class: 'form-input' %>
+      <%= form.email_field :email, class: 'form-input', value: params[:email] %>
+    </div>
+    <div>
+      <%= form.label :email_confirmation, "Enter user email confirmation", class: 'form-label' %>
+      <%= form.email_field :email_confirmation, class: 'form-input', value: params[:email_confirmation] %>
     </div>
     <div>
       <%= form.label :password, "Enter password", class: 'form-label' %>
-      <%= form.password_field :password, class: 'form-input' %>
+      <%= form.password_field :password, class: 'form-input', value: params[:password] %>
     </div>
 
     <%= form.submit "Submit", class: 'form-input' %>

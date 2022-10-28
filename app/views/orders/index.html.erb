@@ -8,22 +8,16 @@
     <th>Action</th>
     </thead>
     <tbody>
-    <% OrderItem.my_orders(@user.id).each do |order| %>
+    <% orders.each do |order| %>
       <tr>
         <td><%= order.id %></td>
         <td><%= order.date %></td>
         <td><%= @user.first_name %></td>
         <td><%= order.status %></td>
-        <td> <%= link_to "Order Details","/my_orders/#{order.id}", class: "" %> </td>
+        <td> <%= link_to "Order Details", order_order_item_index_path(order_id: order.id), class: "" %> </td>
       </tr>
     <% end %>
 
     </tbody>
   </table>
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>

@@ -1,0 +1,10 @@
+<div class="container">
+  <%= form_with url: menu_category_path, method: :put, class: 'form-control' do |form| %>
+    <div>
+      <%= form.label :name, "Update menu category name", class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-input', value: category.name %>
+    </div>
+
+    <%= form.submit "Submit", class: 'form-input' %>
+  <% end %>
+</div>
