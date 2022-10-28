@@ -2,7 +2,7 @@
   <%= form_with url: menu_category_menu_item_index_path, methods: :post, class: 'form-control' do |form| %>
     <div>
       <%= form.label :menu_category_id, "Please select menu category", class: 'form-label' %>
-      <%= form.select :menu_category_id, MenuCategory.get_all_categories, class: 'form-select' %>
+      <%= form.select :menu_category_id, @all_categories, class: 'form-select' %>
     </div>
     <div>
       <%= form.label :name, "Enter menu item name", class: 'form-label' %>

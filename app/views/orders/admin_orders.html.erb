@@ -17,9 +17,9 @@
         <td>
           <%= link_to "",order_order_item_index_path(order_id: order.id), class: "fa fa-eye" %>&nbsp;
           <% if order.status == 'delivered' %>
-            <%= link_to "Mark as pending", set_status_order_path(id: order.id, status: "pending"), class: "" %>&nbsp;
+            <%= link_to "Mark as pending", set_status_order_path(id: order.id, status: "pending"), class: "", method: :post %>&nbsp;
           <% else %>
-            <%= link_to "Mark as delivered", set_status_order_path(id: order.id, status: "delivered"), class: "" %>&nbsp;
+            <%= link_to "Mark as delivered", set_status_order_path(id: order.id, status: "delivered"), class: "", method: :post %>&nbsp;
           <% end %>
           <%= link_to "","#", class: "fa fa-trash" %>
         </td>

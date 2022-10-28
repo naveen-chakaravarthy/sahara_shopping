@@ -1,4 +1,5 @@
 class MenuItemController < ApplicationController
+  before_action :fetch_all_categories, :fetch_menu_item, only: [:edit, :new, :update]
 
   def index
     menu_items = MenuItem.all.map
@@ -24,11 +25,10 @@ class MenuItemController < ApplicationController
   end
 
   def edit
-    render 'edit', locals: {item: MenuItem.find_by(id: params[:id])}
   end
 
   def update
-    item = MenuItem.find_by(id: params[:id])
+    item = @menu_item
     item.update(
       name: params[:name],
       description: params[:description],
@@ -40,11 +40,19 @@ class MenuItemController < ApplicationController
   end
 
   def destroy
-    item_id = params[:id]
-    item = MenuItem.find_by(id: item_id)
+    item = @menu_item
     item.destroy
     flash[:error] = "Menu Item deleted - #{item.name}."
     redirect_to list_items_menu_category_index_path
   end
 
+  private
+
+  def fetch_menu_item
+    @menu_item = MenuItem.find_by(id: params[:id])
+  end
+
+  def fetch_all_categories
+    @all_categories = MenuCategory.get_all_categories
+  end
 end

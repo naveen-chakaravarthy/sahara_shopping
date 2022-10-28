@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get "admin" => "orders#admin_orders", as: :admin
     end
     member do
-      get "/admin/set_status/:status" => "orders#set_status", as: :set_status
+      post "/admin/set_status" => "orders#set_status", as: :set_status
     end
   end
 
